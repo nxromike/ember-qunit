@@ -6,6 +6,14 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
     name: 'test-app',
+    babel: {
+      plugins: [...require('ember-cli-code-coverage').buildBabelPlugin()],
+      sourceMaps: 'inline'
+    },
+    sourcemaps: {
+      enabled: true,
+      extensions: ['js']
+    }
   });
 
   const { maybeEmbroider } = require('@embroider/test-setup');
